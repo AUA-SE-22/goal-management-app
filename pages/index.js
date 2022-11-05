@@ -1,7 +1,7 @@
 
 
-function Dashboard() {
-  return <h1>This is the dashboard</h1>;
+function Home() {
+  return <h1>This is the homepage</h1>;
 }
 
-export default Dashboard;
+export default Home;
