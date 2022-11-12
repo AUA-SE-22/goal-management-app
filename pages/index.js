@@ -1,7 +1,7 @@
 // @mui
 import { Box, Typography } from '@mui/material';
 
-import Page from '../../components/Page';
+import Page from '../components/Page';
 
 function Home() {
   return (
