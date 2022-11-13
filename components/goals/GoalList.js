@@ -1,19 +1,19 @@
 import GoalItem from './GoalItem';
-import classes from './GoalList.module.css';
+import { ListItemButton } from '@mui/material';
+import PropTypes from 'prop-types';
 
 function GoalList(props) {
   return (
-    <ul className={classes.list}>
+    <ListItemButton href="#">
       {props.goals.map((goal) => (
-        <GoalItem
-          key={goal.id}
-          owner={goal.owner}
-          title={goal.title}
-          status={goal.status}
-        />
+        <GoalItem key={goal.id} owner={goal.owner} title={goal.title} status={goal.status} />
       ))}
-    </ul>
+    </ListItemButton>
   );
 }
+
+GoalList.propTypes = {
+  goals: PropTypes.array,
+};
 
 export default GoalList;
