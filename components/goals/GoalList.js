@@ -6,7 +6,7 @@ function GoalList(props) {
     <ul className={classes.list}>
       {props.goals.map((goal) => (
         <GoalItem
-          id={goal.id}
+          key={goal.id}
           owner={goal.owner}
           title={goal.title}
           status={goal.status}

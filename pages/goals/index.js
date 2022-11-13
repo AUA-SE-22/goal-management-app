@@ -1,4 +1,4 @@
-import GoalList from "../../components/goals/goalList";
+import GoalList from "../../components/goals/GoalList";
 
 //TODO to be replaced by the fetched data
 const goals = [
