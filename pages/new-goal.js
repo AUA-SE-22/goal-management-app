@@ -1,6 +1,17 @@
+import NewGoalForm from '../components/goals/NewGoalForm';
+import Page from '../components/Page';
+
 function NewGoal() {
-    return <h1>This is a form</h1>;
+  //TODO change to a post request to an endpoint
+  function addGoalHandler(enteredGoalData) {
+    console.log(enteredGoalData);
   }
-  
-  export default NewGoal;
-  
+
+  return (
+    <Page title="SE: Goal App">
+      <NewGoalForm onAddGoal={addGoalHandler} />
+    </Page>
+  );
+}
+
+export default NewGoal;
