@@ -1,20 +1,24 @@
 import Card from '../ui/Card';
-import classes from './GoalItem.module.css';
+import PropTypes from 'prop-types';
+import { Typography, Button, Divider } from '@mui/material';
 
-function GoalItem(props) {
+function GoalItem({ title, owner }) {
   return (
-    <li className={classes.item}>
       <Card>
-        <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <span>{props.owner}</span>
-        </div>
-        <div className={classes.actions}>
-          <button>Show Details</button>
-        </div>
+        <Divider>
+          <Typography variant="h3">{title}</Typography>
+          <Typography variant="h2">{owner}</Typography>
+        </Divider>
+        <Divider>
+          <Button>Show Details</Button>
+        </Divider>
       </Card>
-    </li>
   );
 }
+
+GoalItem.propTypes = {
+  title: PropTypes.string,
+  owner: PropTypes.string,
+};
 
 export default GoalItem;
