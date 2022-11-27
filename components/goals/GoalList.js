@@ -1,10 +1,7 @@
 import GoalItem from './GoalItem';
-// import EmployerGoalItem from './EmployerGoalItem';
 import { ListItem } from '@mui/material';
 import PropTypes from 'prop-types';
 
-
-//TODO conditional rendering for employer and employee
 function GoalList({ goals, isEmployer }) {
   return (
       <ListItem>
