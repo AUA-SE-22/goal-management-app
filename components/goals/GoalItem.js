@@ -2,7 +2,7 @@ import Card from '../ui/Card';
 import PropTypes from 'prop-types';
 import { Typography, Button, Divider } from '@mui/material';
 
-function EmployerGoalItem({ title, owner }) {
+function GoalItem({ title, owner, isEmployer }) {
 
   //TODO replace with a modal popping up to show the details
   function handleDetails() {
@@ -19,6 +19,17 @@ function EmployerGoalItem({ title, owner }) {
     console.log('Rejected');
   }
 
+      //TODO modify to enable editing
+      function handleEdit() {
+        console.log('to edit');
+      }
+  
+    //TODO replace with an endpoint to delete the goal
+    function handleDelete() {
+      console.log('deleted');
+    }
+  
+
   return (
       <Card>
         <Divider>
@@ -27,16 +38,19 @@ function EmployerGoalItem({ title, owner }) {
         </Divider>
         <Divider>
         <Button onClick={handleDetails}>Details</Button>
-        <Button onClick={handleApprove}>Approve</Button>
-        <Button onClick={handleReject}>Reject</Button>
+        {isEmployer && <Button onClick={handleApprove}>Approve</Button>}
+        {isEmployer && <Button onClick={handleReject}>Reject</Button>}
+        {!isEmployer && <Button onClick={handleEdit}>Edit</Button>}
+        {!isEmployer && <Button onClick={handleDelete}>Delete</Button>}
         </Divider>
       </Card>
   );
 }
 
-EmployerGoalItem.propTypes = {
+GoalItem.propTypes = {
   title: PropTypes.string,
   owner: PropTypes.string,
+  isEmployer: PropTypes.bool,
 };
 
-export default EmployerGoalItem;
+export default GoalItem;
