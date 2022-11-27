@@ -1,7 +1,14 @@
-import { Modal, Box } from '@mui/material';
+import { Modal, Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 function GoalDetailModal({ open, handleClose }) {
+
+    //TODO to be replaced by the goal object retrieved from the BE
+    const goalDetails = {
+        name: 'goal name',
+        detail: 'goal description'
+    }
+
   return (
     <Modal
       open={open}
@@ -10,8 +17,11 @@ function GoalDetailModal({ open, handleClose }) {
       aria-describedby="parent-modal-description"
     >
       <Box>
-        <h2 id="parent-modal-title">Text in a modal</h2>
-        <p id="parent-modal-description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+        <Typography variant="h3" id="parent-modal-title">Goal details</Typography>
+        <Typography variant="h2">Goal Title</Typography>
+        <Typography paragraph={true}>{goalDetails.name}</Typography>
+        <Typography variant="h2">Goal Description</Typography>
+        <Typography paragraph={true}>{goalDetails.detail}</Typography>
       </Box>
     </Modal>
   );
