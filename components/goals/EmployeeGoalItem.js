@@ -5,7 +5,7 @@ import { Typography, Button, Divider } from '@mui/material';
 
 
 
-function GoalItem({ title, owner }) {
+function EmployeeGoalItem({ title, owner }) {
 
   //TODO replace with a modal popping up to show the details
   function handleDetails() {
@@ -37,9 +37,9 @@ function GoalItem({ title, owner }) {
   );
 }
 
-GoalItem.propTypes = {
+EmployeeGoalItem.propTypes = {
   title: PropTypes.string,
   owner: PropTypes.string,
 };
 
-export default GoalItem;
+export default EmployeeGoalItem;
