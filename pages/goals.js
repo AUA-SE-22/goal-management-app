@@ -1,5 +1,5 @@
-import GoalList from '../../components/goals/GoalList';
-import Page from '../../components/Page';
+import GoalList from '../components/goals/EmployeeGoalList';
+import Page from '../components/Page';
 
 //TODO to be replaced by the fetched data
 const goals = [
