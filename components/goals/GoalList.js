@@ -1,12 +1,14 @@
-import GoalItem from './GoalItem';
+import EmployeeGoalItem from './EmployeeGoalItem';
 import { ListItem } from '@mui/material';
 import PropTypes from 'prop-types';
 
+
+//TODO conditional rendering for employer and employee
 function GoalList({ goals }) {
   return (
       <ListItem>
         {goals.map((goal) => (
-          <GoalItem key={goal.id} owner={goal.owner} title={goal.title} status={goal.status} />
+          <EmployeeGoalItem key={goal.id} owner={goal.owner} title={goal.title} status={goal.status} />
         ))}
       </ListItem>
   );
