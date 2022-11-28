@@ -1,15 +1,10 @@
 import Card from '../ui/Card';
-import GoalDetailModal from './GoalDetailModal';
+
 import PropTypes from 'prop-types';
 import { Typography, Button, Divider } from '@mui/material';
-import { useState } from 'react';
 
-function GoalItem({ title, owner, isEmployer }) {
-  const [open, setOpen] = useState(false);
 
-  function handleDetails() {
-    setOpen(true);
-  }
+function GoalItem({ title, owner, isEmployer, handleDetails }) {
 
   //TODO replace with an endpoint to approve the goal
   function handleApprove() {
@@ -31,10 +26,6 @@ function GoalItem({ title, owner, isEmployer }) {
     console.log('deleted');
   }
 
-  function handleClose() {
-    setOpen(false);
-  }
-
   return (
     <Divider>
       <Card>
@@ -50,7 +41,7 @@ function GoalItem({ title, owner, isEmployer }) {
           {!isEmployer && <Button onClick={handleDelete}>Delete</Button>}
         </Divider>
       </Card>
-      <GoalDetailModal open={open} handleClose={handleClose} />
+      
     </Divider>
   );
 }
@@ -59,6 +50,7 @@ GoalItem.propTypes = {
   title: PropTypes.string,
   owner: PropTypes.string,
   isEmployer: PropTypes.bool,
+  handleDetails: PropTypes.func
 };
 
 export default GoalItem;
