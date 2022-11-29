@@ -7,11 +7,11 @@ import { useState } from 'react';
 function GoalList({ goals, isEmployer }) {
   const [open, setOpen] = useState(false);
 
-  function handleDetails() {
+  const handleDetails = () => {
     setOpen(true);
   }
 
-  function handleClose() {
+  const handleClose = () => {
     setOpen(false);
   }
 

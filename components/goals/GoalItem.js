@@ -7,22 +7,22 @@ import { Typography, Button, Divider } from '@mui/material';
 function GoalItem({ title, owner, isEmployer, handleDetails }) {
 
   //TODO replace with an endpoint to approve the goal
-  function handleApprove() {
+  const handleApprove = () => {
     console.log('Approved');
   }
 
   //TODO replace with an endpoint to reject the goal
-  function handleReject() {
+  const handleReject = () => {
     console.log('Rejected');
   }
 
   //TODO modify to enable editing
-  function handleEdit() {
+  const handleEdit = () => {
     console.log('to edit');
   }
 
   //TODO replace with an endpoint to delete the goal
-  function handleDelete() {
+  const handleDelete = () => {
     console.log('deleted');
   }
 
