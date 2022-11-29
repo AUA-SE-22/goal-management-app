@@ -1,22 +1,35 @@
-import EmployeeGoalItem from './EmployeeGoalItem';
-// import EmployerGoalItem from './EmployerGoalItem';
-import { ListItem } from '@mui/material';
+import GoalItem from './GoalItem';
+import GoalDetailModal from './GoalDetailModal';
+import { ListItem, Divider } from '@mui/material';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
+function GoalList({ goals, isEmployer }) {
+  const [open, setOpen] = useState(false);
 
-//TODO conditional rendering for employer and employee
-function GoalList({ goals }) {
+  const handleDetails = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
+    <Divider>
       <ListItem>
         {goals.map((goal) => (
-          <EmployeeGoalItem key={goal.id} owner={goal.owner} title={goal.title} status={goal.status} />
+          <GoalItem key={goal.id} isEmployer={isEmployer} owner={goal.owner} title={goal.title} status={goal.status} handleDetails={handleDetails} />
         ))}
       </ListItem>
+      <GoalDetailModal open={open} handleClose={handleClose} />
+    </Divider>
   );
 }
 
 GoalList.propTypes = {
   goals: PropTypes.array,
+  isEmployer: PropTypes.bool,
 };
 
 export default GoalList;
