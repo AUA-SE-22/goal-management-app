@@ -35,10 +35,8 @@ function GoalItem({ title, owner, isEmployer, handleDetails }) {
         </Divider>
         <Divider>
           <Button onClick={handleDetails}>Details</Button>
-          {isEmployer && <Button onClick={handleApprove}>Approve</Button>}
-          {isEmployer && <Button onClick={handleReject}>Reject</Button>}
-          {!isEmployer && <Button onClick={handleEdit}>Edit</Button>}
-          {!isEmployer && <Button onClick={handleDelete}>Delete</Button>}
+          <Button onClick={isEmployer ? handleApprove : handleEdit}>{isEmployer ? 'Approve' : 'Edit'}</Button>
+          <Button onClick={isEmployer ? handleReject : handleDelete}>{isEmployer ? 'Reject' : 'Delete'}</Button>
         </Divider>
       </Card>
       
