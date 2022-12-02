@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Layout from '../layouts';
-import '../styles/globals.css';
 
 MyApp.propTypes = {
   Component: PropTypes.func,
