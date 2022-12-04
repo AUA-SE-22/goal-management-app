@@ -1,5 +1,5 @@
 // @mui
-import { Box, Typography, Link } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 import Page from '../components/Page';
@@ -9,11 +9,17 @@ function Home() {
   if (session) {
     return (
       <Page title="SE: Goal App">
-        <Box>
-          <Link href="/goals">Dashboard</Link>
-          <Link href="/new-goal">Create new goal</Link>
-        </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            maxWidth: '780px',
+            margin: 'auto',
+          }}
+        >
+          {' '}
           <Typography variant="h2" sx={{ mb: 5 }}>
             Goal Management Application
           </Typography>

@@ -7,7 +7,6 @@ import { Box, Stack, AppBar, Toolbar, Link } from '@mui/material';
 import { HEADER } from '../../../config';
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
-  boxShadow: 'none',
   height: HEADER.MOBILE_HEIGHT,
   zIndex: theme.zIndex.appBar + 1,
   transition: theme.transitions.create(['width', 'height'], {

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Layout from '../layouts';
-import '../styles/globals.css';
 import { SessionProvider } from 'next-auth/react';
 
 MyApp.propTypes = {
