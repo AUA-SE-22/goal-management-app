@@ -1,5 +1,6 @@
 import GoalList from '../components/goals/GoalList';
 import Page from '../components/Page';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 //TODO to be replaced by the fetched data
 const goals = [
@@ -8,10 +9,19 @@ const goals = [
 ];
 
 function Goals() {
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <Page title="SE: Goal App">
+        <GoalList goals={goals} />
+      </Page>
+    );
+  }
   return (
-    <Page title="SE: Goal App">
-      <GoalList goals={goals} />
-    </Page>
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
   );
 }
 
