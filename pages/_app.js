@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
 import Layout from '../layouts';
 import '../styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
 
 MyApp.propTypes = {
   Component: PropTypes.func,
   pageProps: PropTypes.object,
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SessionProvider session={session}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 
