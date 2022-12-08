@@ -1,7 +1,11 @@
 import PropTypes from 'prop-types';
-import { Typography, Button, Divider, Card } from '@mui/material';
+import { Typography, Button, Divider, Card, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
 
-function GoalItem({ title, owner, isEmployer, handleDetails }) {
+function GoalItem({ isEmployer, goal, handleDetails }) {
+  const { push } = useRouter();
+
+  const { id, name, detail, status } = goal || {};
   //TODO replace with an endpoint to approve the goal
   const handleApprove = () => {
     console.log('Approved');
@@ -14,7 +18,7 @@ function GoalItem({ title, owner, isEmployer, handleDetails }) {
 
   //TODO modify to enable editing
   const handleEdit = () => {
-    console.log('to edit');
+    push(`/goals/${id}/edit`);
   };
 
   //TODO replace with an endpoint to delete the goal
@@ -23,16 +27,21 @@ function GoalItem({ title, owner, isEmployer, handleDetails }) {
   };
 
   return (
-    <Card sx={{ m: 2 }}>
-      <Divider>
-        <Typography variant="h3">{title}</Typography>
-        <Typography variant="h2">{owner}</Typography>
-      </Divider>
-      <Divider>
-        <Button onClick={handleDetails}>Details</Button>
-        <Button onClick={isEmployer ? handleApprove : handleEdit}>{isEmployer ? 'Approve' : 'Edit'}</Button>
-        <Button onClick={isEmployer ? handleReject : handleDelete}>{isEmployer ? 'Reject' : 'Delete'}</Button>
-      </Divider>
+    <Card sx={{ m: 2, height: 1, textAlign: 'center' }}>
+      <Grid container direction="column" sx={{ height: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Grid item sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" sx={{ my: 3 }}>
+            {name}
+          </Typography>
+          <Typography variant="h6">{detail}</Typography>
+        </Grid>
+        <Grid item>
+          <Divider sx={{ my: 2 }} />
+          <Button onClick={handleDetails}>Details</Button>
+          <Button onClick={isEmployer ? handleApprove : handleEdit}>{isEmployer ? 'Approve' : 'Edit'}</Button>
+          <Button onClick={isEmployer ? handleReject : handleDelete}>{isEmployer ? 'Reject' : 'Delete'}</Button>
+        </Grid>
+      </Grid>
     </Card>
   );
 }

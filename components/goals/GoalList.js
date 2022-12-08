@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
-import { Button, Link, ListItem } from '@mui/material';
+import { Button, Grid, Link } from '@mui/material';
 import { Box } from '@mui/system';
 import GoalItem from './GoalItem';
 import GoalDetailModal from './GoalDetailModal';
@@ -20,26 +20,21 @@ function GoalList({ goals, isEmployer }) {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <Button variant="contained" sx={{ ml: 'auto' }}>
-          <NextLink href="/new-goal" passHref legacyBehavior>
+        <Button variant="contained" sx={{ ml: 'auto', mb: 2 }}>
+          <NextLink href="goals/new-goal" passHref legacyBehavior>
             <Link underline="none" color="inherit">
               New Goal
             </Link>
           </NextLink>
         </Button>
       </Box>
-      <ListItem sx={{ display: 'flex', flexWrap: 'wrap' }}>
+      <Grid container spacing={5}>
         {goals.map((goal) => (
-          <GoalItem
-            key={goal.id}
-            isEmployer={isEmployer}
-            owner={goal.owner}
-            title={goal.title}
-            status={goal.status}
-            handleDetails={handleDetails}
-          />
+          <Grid item key={goal.id} xs={6}>
+            <GoalItem isEmployer={isEmployer} goal={goal} handleDetails={handleDetails} />
+          </Grid>
         ))}
-      </ListItem>
+      </Grid>
       <GoalDetailModal open={open} handleClose={handleClose} />
     </>
   );
