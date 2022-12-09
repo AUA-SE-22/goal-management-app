@@ -34,7 +34,6 @@ export class ApiService {
   }
 
   post(resource, body, config) {
-    console.log(resource, body);
     return axios.post(this.buildUrl(resource), body, {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',

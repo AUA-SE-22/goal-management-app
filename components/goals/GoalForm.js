@@ -17,7 +17,6 @@ GoalForm.propTypes = {
 };
 
 export function GoalForm({ currentGoal }) {
-  console.log(currentGoal);
   const { id, name, detail, employerId } = currentGoal || {};
   const { push } = useRouter();
   // const { enqueueSnackbar } = useSnackbar();
