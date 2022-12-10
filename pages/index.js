@@ -1,6 +1,6 @@
 // @mui
 import { Box, Typography } from '@mui/material';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 
 import Page from '../components/Page';
 

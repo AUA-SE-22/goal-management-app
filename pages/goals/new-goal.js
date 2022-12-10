@@ -1,5 +1,5 @@
 // @mui
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { Container } from '@mui/material';
 import Page from '../../components/Page';
 import { GoalForm } from '../../components/goals/GoalForm';

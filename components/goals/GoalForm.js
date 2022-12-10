@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { Button, CardHeader, Stack, Card, Box } from '@mui/material';
