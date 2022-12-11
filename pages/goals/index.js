@@ -3,6 +3,7 @@ import Page from '../../components/Page';
 import { useSession, signIn } from 'next-auth/react';
 import GoalManagementService from '../../helpers/service/GoalManagementService';
 import { useEffect, useState } from 'react';
+import { USER_ROLE } from '../../helpers/constants/user';
 
 function Goals() {
   const { data: token } = useSession();
@@ -14,7 +15,7 @@ function Goals() {
         const { data } = await GoalManagementService.getEmployeeGoals();
         setGoals(data);
       } catch (error) {
-        //
+        console.log(error);
       }
     };
     getGoals();
@@ -26,7 +27,7 @@ function Goals() {
     const role = payload.realm_access.roles[1];
     return (
       <Page title="SE: Goal App">
-        <GoalList goals={goals} isEmployer={role==='Employer'} />
+        <GoalList goals={goals} isEmployer={role === USER_ROLE.employer} />
       </Page>
     );
   }
