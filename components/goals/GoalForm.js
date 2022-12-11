@@ -66,7 +66,7 @@ export function GoalForm({ currentGoal }) {
         const { data } = await GoalManagementService.getEmployers();
         setEmployers(data);
       } catch (error) {
-        //
+        console.error(error);
       }
     };
     getEmployers();

@@ -14,7 +14,7 @@ function Goals() {
         const { data } = await GoalManagementService.getEmployeeGoals();
         setGoals(data);
       } catch (error) {
-        //
+        console.error(error);
       }
     };
     getGoals();
