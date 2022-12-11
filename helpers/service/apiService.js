@@ -1,4 +1,4 @@
-import axios from '../axios';
+import axios from '../../utils/axios';
 import { HOST_API } from '../../config';
 
 const buildQuery = (query) => {

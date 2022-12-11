@@ -1,37 +1,28 @@
-import GoalList from '../../components/goals/GoalList';
+import GoalList from '../../sections/goals/GoalList';
 import Page from '../../components/Page';
-import { useSession, signIn, signOut } from 'next-auth/react';
 import GoalManagementService from '../../helpers/service/GoalManagementService';
 import { useEffect, useState } from 'react';
+import { USER_ROLE } from '../../helpers/constants/user';
 
 function Goals() {
-  const { data: session } = useSession();
   const [goals, setGoals] = useState([]);
 
-  if (session) {
-    useEffect(() => {
-      const getGoals = async () => {
-        try {
-          const { data } = await GoalManagementService.getEmployeeGoals();
-          setGoals(data);
-        } catch (error) {
-          //
-        }
-      };
-      getGoals();
-    }, []);
+  useEffect(() => {
+    const getGoals = async () => {
+      try {
+        const { data } = await GoalManagementService.getEmployeeGoals();
+        setGoals(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getGoals();
+  }, []);
 
-    return (
-      <Page title="SE: Goal App">
-        <GoalList goals={goals} />
-      </Page>
-    );
-  }
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <Page title="SE: Goal App">
+      <GoalList goals={goals} isEmployer={'role' === USER_ROLE.employer} />
+    </Page>
   );
 }
 

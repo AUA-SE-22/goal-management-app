@@ -22,13 +22,13 @@ function GoalList({ goals, isEmployer }) {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        <Button variant="contained" sx={{ ml: 'auto', mb: 2 }}>
+        {!isEmployer && <Button variant="contained" sx={{ ml: 'auto', mb: 2 }}>
           <NextLink href="goals/new-goal" passHref legacyBehavior>
             <Link underline="none" color="inherit">
               New Goal
             </Link>
           </NextLink>
-        </Button>
+        </Button>}
       </Box>
       <Grid container spacing={5}>
         {goals.map((goal) => (

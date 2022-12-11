@@ -1,7 +1,7 @@
 import { Modal, Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import Label from '../../components/Label';
 import { GOAL_STATUS_STYLES } from '../../helpers/constants/goal';
-import Label from '../Label';
 
 const style = {
   position: 'absolute',
