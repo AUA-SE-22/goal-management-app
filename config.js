@@ -15,3 +15,14 @@ export const defaultSettings = {
 };
 
 // -----------------------------------------------
+
+// API
+export const HOST_API = 'http://localhost:8081';
+
+export const API_ENDPOINTS = {
+  goal: {
+    employeeGoal: 'employee/goals',
+    employerGoal: 'employer/goals',
+    employers: 'employers',
+  },
+};
