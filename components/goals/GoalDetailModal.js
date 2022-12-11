@@ -1,27 +1,44 @@
 import { Modal, Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { GOAL_STATUS_STYLES } from '../../helpers/constants/goal';
+import Label from '../Label';
 
-function GoalDetailModal({ open, handleClose }) {
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: '#fff',
+  border: '2px solid #e2e2e2',
+  borderRadius: '8px',
+  boxShadow: 24,
+  p: 4,
+};
 
-    //TODO to be replaced by the goal object retrieved from the BE
-    const goalDetails = {
-        name: 'goal name',
-        detail: 'goal description'
-    }
+function GoalDetailModal({ open, goal, handleClose }) {
+  const { name, detail, status } = goal || {};
 
   return (
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="parent-modal-title"
-      aria-describedby="parent-modal-description"
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
     >
-      <Box>
-        <Typography variant="h3" id="parent-modal-title">Goal details</Typography>
-        <Typography variant="h2">Goal Title</Typography>
-        <Typography paragraph={true}>{goalDetails.name}</Typography>
-        <Typography variant="h2">Goal Description</Typography>
-        <Typography paragraph={true}>{goalDetails.detail}</Typography>
+      <Box sx={style}>
+        <Label
+          color={GOAL_STATUS_STYLES[`${status}`]?.color}
+          sx={{ textTransform: 'uppercase', position: 'absolute', top: 10, right: 10 }}
+        >
+          {status}
+        </Label>
+        <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ m: 2 }}>
+          {name}
+        </Typography>
+        <Typography id="modal-modal-description" sx={{ m: 2 }}>
+          {detail}
+        </Typography>
       </Box>
     </Modal>
   );
@@ -29,6 +46,7 @@ function GoalDetailModal({ open, handleClose }) {
 
 GoalDetailModal.propTypes = {
   open: PropTypes.bool,
+  goal: PropTypes.object,
   handleClose: PropTypes.func,
 };
 
