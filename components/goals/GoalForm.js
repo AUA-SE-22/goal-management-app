@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { useSnackbar } from 'notistack';
 import { Button, CardHeader, Stack, Card, Box } from '@mui/material';
 import FormProvider from '../form/FormProvider';
 import RHFTextField from '../form/RHFTextField';
@@ -18,7 +19,7 @@ GoalForm.propTypes = {
 export function GoalForm({ currentGoal }) {
   const { id, name, detail, employerId } = currentGoal || {};
   const { push } = useRouter();
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [employers, setEmployers] = useState([]);
 
@@ -52,7 +53,7 @@ export function GoalForm({ currentGoal }) {
     try {
       id ? editGoal(data) : addGoal(data);
       reset();
-      // enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
+      enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
       push('/goals');
     } catch (error) {
       console.error(error);

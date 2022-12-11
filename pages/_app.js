@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import Layout from '../layouts';
 import { SessionProvider } from 'next-auth/react';
+import Layout from '../layouts';
+import NotistackProvider from '../components/NotistackProvider';
 
 MyApp.propTypes = {
   Component: PropTypes.func,
@@ -10,9 +11,11 @@ MyApp.propTypes = {
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <NotistackProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </NotistackProvider>
     </SessionProvider>
   );
 }
