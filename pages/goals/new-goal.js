@@ -1,7 +1,7 @@
 // @mui
 import { Container } from '@mui/material';
 import Page from '../../components/Page';
-import { GoalForm } from '../../components/goals/GoalForm';
+import { GoalForm } from '../../sections/goals/GoalForm';
 
 export default function GoalCreate() {
   return (

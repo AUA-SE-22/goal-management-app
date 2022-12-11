@@ -1,4 +1,4 @@
-import GoalList from '../../components/goals/GoalList';
+import GoalList from '../../sections/goals/GoalList';
 import Page from '../../components/Page';
 import GoalManagementService from '../../helpers/service/GoalManagementService';
 import { useEffect, useState } from 'react';

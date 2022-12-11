@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 // @mui
 import { Container } from '@mui/material';
-import { GoalForm } from '../../../components/goals/GoalForm';
+import { GoalForm } from '../../../sections/goals/GoalForm';
 import Page from '../../../components/Page';
 import GoalManagementService from '../../../helpers/service/GoalManagementService';
 import RoleBasedGuard from '../../../guards/RoleBasedGuard';
