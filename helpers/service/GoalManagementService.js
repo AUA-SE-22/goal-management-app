@@ -19,7 +19,6 @@ class GoalManagementService extends ApiService {
   }
 
   addEmployeeGoal(data) {
-    console.log('axx');
     return this.post(API_ENDPOINTS.goal.employeeGoal, data);
   }
 

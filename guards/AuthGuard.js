@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { isValidToken, setSession } from '../utils/jwt';
 import Login from '../pages/auth/login';
-// import Login from '../pages/auth/login';
 
 AuthGuard.propTypes = {
   children: PropTypes.node,

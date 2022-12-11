@@ -20,7 +20,7 @@ export default function GoalEdit() {
         const { data } = await GoalManagementService.getEmployeeGoal(id);
         setCurrentGoal(data);
       } catch (error) {
-        //
+        console.log(error);
       }
     };
     getEmployeeGoal();

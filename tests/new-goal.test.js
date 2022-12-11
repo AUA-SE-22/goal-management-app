@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import NewGoal from '../pages/new-goal'
+import NewGoal from '../pages/goals/new-goal'
 
 describe('Correctly renders', () => {
 

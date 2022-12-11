@@ -2,10 +2,13 @@ import PropTypes from 'prop-types';
 import { Typography, Button, Divider, Card, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 
+GoalItem.propTypes = {
+  goal: PropTypes.object,
+};
 function GoalItem({ isEmployer, goal, handleDetails }) {
   const { push } = useRouter();
 
-  const { id, name, detail, status } = goal || {};
+  const { id, name, detail } = goal || {};
   //TODO replace with an endpoint to approve the goal
   const handleApprove = () => {
     console.log('Approved');

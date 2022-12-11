@@ -5,6 +5,7 @@ import { Box, Stack, Container, Typography } from '@mui/material';
 import Page from '../../components/Page';
 // sections
 import LoginForm from '../../sections/login/LoginForm';
+import GuestGuard from '../../guards/GuestGuard';
 
 const RootStyle = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
@@ -24,22 +25,24 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function Login() {
   return (
-    <Page title="Login">
-      <RootStyle>
-        <Container maxWidth="sm">
-          <ContentStyle>
-            <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
-              <Box sx={{ flexGrow: 1 }}>
-                <Typography variant="h4" gutterBottom>
-                  Sign in to AUA Goal Management
-                </Typography>
-                <Typography sx={{ color: 'text.secondary' }}>Use Keycloak.</Typography>
-              </Box>
-            </Stack>
-            <LoginForm />
-          </ContentStyle>
-        </Container>
-      </RootStyle>
-    </Page>
+    <GuestGuard>
+      <Page title="Login">
+        <RootStyle>
+          <Container maxWidth="sm">
+            <ContentStyle>
+              <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
+                <Box sx={{ flexGrow: 1 }}>
+                  <Typography variant="h4" gutterBottom>
+                    Sign in to AUA Goal Management
+                  </Typography>
+                  <Typography sx={{ color: 'text.secondary' }}>Use Keycloak.</Typography>
+                </Box>
+              </Stack>
+              <LoginForm />
+            </ContentStyle>
+          </Container>
+        </RootStyle>
+      </Page>
+    </GuestGuard>
   );
 }
