@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 // hooks
 import { useSession } from 'next-auth/react';
 import { isValidToken, setSession } from '../utils/jwt';
+import Login from '../pages/auth/login';
 // import Login from '../pages/auth/login';
 
 AuthGuard.propTypes = {
@@ -25,11 +26,11 @@ export default function AuthGuard({ children }) {
     }
   }, [pathname, push, requestedLocation]);
 
-  if (token) {
+  if (!token) {
     if (pathname !== requestedLocation) {
       setRequestedLocation(pathname);
     }
-    return 'loginpage';
+    return <Login />;
   }
 
   const accessToken = token?.accessToken;
