@@ -1,8 +1,8 @@
 // @mui
 import { useSession, signIn } from 'next-auth/react';
 import { Container } from '@mui/material';
-import Page from '../../components/Page';
-import { GoalForm } from '../../components/goals/GoalForm';
+import Page from '../../../components/Page';
+import { GoalForm } from '../../../components/goals/GoalForm';
 
 export default function GoalCreate() {
   const { data: session } = useSession();
