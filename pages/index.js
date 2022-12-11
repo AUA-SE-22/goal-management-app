@@ -1,12 +1,12 @@
 // @mui
 import { Box, Typography } from '@mui/material';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 
 import Page from '../components/Page';
 
 function Home() {
-  const { data: session } = useSession();
-  if (session) {
+  const { data: token } = useSession();
+  if (token) {
     return (
       <Page title="SE: Goal App">
         <Box

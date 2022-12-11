@@ -1,6 +1,6 @@
 import GoalList from '../components/goals/GoalList';
 import Page from '../components/Page';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 
 //TODO to be replaced by the fetched data
 const goals = [
@@ -9,11 +9,15 @@ const goals = [
 ];
 
 function Goals() {
-  const { data: session } = useSession();
-  if (session) {
+  const { data: token } = useSession();
+  if (token) {
+    const accessToken = token.accessToken;
+    const payload = JSON.parse(Buffer.from(accessToken.split('.')[1], 'base64').toString());
+    const role = payload.realm_access.roles[1];
+    console.log(role);
     return (
       <Page title="SE: Goal App">
-        <GoalList goals={goals} />
+        <GoalList goals={goals} isEmployer={role==='Employer'} />
       </Page>
     );
   }

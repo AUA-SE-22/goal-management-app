@@ -1,6 +1,6 @@
 import NewGoalForm from '../components/goals/NewGoalForm';
 import Page from '../components/Page';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 
 function NewGoal() {
   //TODO change to a post request to an endpoint
