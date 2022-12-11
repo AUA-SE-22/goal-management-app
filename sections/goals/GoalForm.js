@@ -6,11 +6,12 @@ import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { Button, CardHeader, Stack, Card, Box } from '@mui/material';
-import FormProvider from '../form/FormProvider';
-import RHFTextField from '../form/RHFTextField';
-import RHFSelect from '../form/RHFSelect';
-import Label from '../Label';
+
 import GoalManagementService from '../../helpers/service/GoalManagementService';
+import FormProvider from '../../components/form/FormProvider';
+import Label from '../../components/Label';
+import RHFTextField from '../../components/form/RHFTextField';
+import RHFSelect from '../../components/form/RHFSelect';
 
 GoalForm.propTypes = {
   currentGoal: PropTypes.object,
