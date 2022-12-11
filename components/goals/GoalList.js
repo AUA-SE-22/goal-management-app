@@ -8,8 +8,10 @@ import GoalDetailModal from './GoalDetailModal';
 
 function GoalList({ goals, isEmployer }) {
   const [open, setOpen] = useState(false);
+  const [goalItem, setGoalItem] = useState();
 
-  const handleDetails = () => {
+  const handleDetails = (goal) => {
+    setGoalItem(goal);
     setOpen(true);
   };
 
@@ -31,11 +33,11 @@ function GoalList({ goals, isEmployer }) {
       <Grid container spacing={5}>
         {goals.map((goal) => (
           <Grid item key={goal.id} xs={6}>
-            <GoalItem isEmployer={isEmployer} goal={goal} handleDetails={handleDetails} />
+            <GoalItem isEmployer={isEmployer} goal={goal} handleDetails={() => handleDetails(goal)} />
           </Grid>
         ))}
       </Grid>
-      <GoalDetailModal open={open} handleClose={handleClose} />
+      <GoalDetailModal open={open} handleClose={handleClose} goal={goalItem} />
     </>
   );
 }
