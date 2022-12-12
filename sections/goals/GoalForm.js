@@ -50,9 +50,9 @@ export function GoalForm({ currentGoal }) {
 
   const editGoal = async (data) => await GoalManagementService.editEmployeeGoal(id, data);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
-      id ? editGoal(data) : addGoal(data);
+      await (id ? editGoal(data) : addGoal(data));
       reset();
       enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
       push('/goals');
