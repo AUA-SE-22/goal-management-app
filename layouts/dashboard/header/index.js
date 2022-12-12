@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import NextLink from 'next/link';
+import { signOut } from "next-auth/react"
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, Link } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, Link, Button } from '@mui/material';
 // config
 import { HEADER } from '../../../config';
 
@@ -69,6 +70,22 @@ export default function DashboardHeader() {
               </Link>
             </NextLink>
           ))}
+          <Button 
+            onClick={() => signOut()}
+            color="error"
+            sx={{
+              px: 3,
+              py: 2,
+              fontWeight: 900,
+              '&.MuiLink-root': {
+                '&:hover': {
+                  color: theme.palette.info.light,
+                },
+              },
+            }}
+          >
+            Sign out
+          </Button>
         </Stack>
       </Toolbar>
     </RootStyle>
