@@ -24,20 +24,13 @@ export class ApiService {
 
   get(resource, query = {}, config = {}) {
     return axios.get(`${this.buildUrl(resource) + buildQuery(query)}`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      },
       ...config,
       timeout: waitApiCallTime,
     });
   }
 
   post(resource, body, config) {
-    console.log(resource, body);
     return axios.post(this.buildUrl(resource), body, {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       ...config,
       timeout: waitApiCallTime,
     });

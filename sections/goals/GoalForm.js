@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { useSnackbar } from 'notistack';
 import { Button, CardHeader, Stack, Card, Box } from '@mui/material';
 
 import GoalManagementService from '../../helpers/service/GoalManagementService';
@@ -18,10 +18,9 @@ GoalForm.propTypes = {
 };
 
 export function GoalForm({ currentGoal }) {
-  console.log(currentGoal);
   const { id, name, detail, employerId } = currentGoal || {};
   const { push } = useRouter();
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const [employers, setEmployers] = useState([]);
 
@@ -55,7 +54,7 @@ export function GoalForm({ currentGoal }) {
     try {
       id ? editGoal(data) : addGoal(data);
       reset();
-      // enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
+      enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
       push('/goals');
     } catch (error) {
       console.error(error);
@@ -68,7 +67,7 @@ export function GoalForm({ currentGoal }) {
         const { data } = await GoalManagementService.getEmployers();
         setEmployers(data);
       } catch (error) {
-        //
+        console.error(error);
       }
     };
     getEmployers();
