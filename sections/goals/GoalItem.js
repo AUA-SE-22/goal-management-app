@@ -6,7 +6,7 @@ GoalItem.propTypes = {
   goal: PropTypes.object,
 };
 function GoalItem({ isEmployer, goal, handleDetails }) {
-  const { push } = useRouter();
+  const push = useRouter();
 
   const { id, name, detail } = goal || {};
   //TODO replace with an endpoint to approve the goal
