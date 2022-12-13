@@ -12,6 +12,7 @@ import FormProvider from '../../components/form/FormProvider';
 import Label from '../../components/Label';
 import RHFTextField from '../../components/form/RHFTextField';
 import RHFSelect from '../../components/form/RHFSelect';
+import { PATH_PAGE } from '../../utils/paths';
 
 GoalForm.propTypes = {
   currentGoal: PropTypes.object,
@@ -55,7 +56,7 @@ export function GoalForm({ currentGoal }) {
       await (id ? editGoal(data) : addGoal(data));
       reset();
       enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
-      push('/goals');
+      push(PATH_PAGE.goals);
     } catch (error) {
       console.error(error);
     }

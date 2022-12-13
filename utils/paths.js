@@ -11,8 +11,9 @@ export const PATH_AUTH = {
 };
 
 export const PATH_PAGE = {
+  root: ROOTS_DASHBOARD,
   goals: path(ROOTS_DASHBOARD, 'goals'),
-  new: path(ROOTS_DASHBOARD, 'goals/new'),
+  new: path(ROOTS_DASHBOARD, 'goals/new-goal'),
   edit: path(ROOTS_DASHBOARD, `goals/:id/edit`),
 };
 
