@@ -11,11 +11,11 @@ GuestGuard.propTypes = {
 export default function GuestGuard({ children }) {
   const { data: token } = useSession();
 
-  const { push } = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     if (token) {
-      push(PATH_PAGE.root);
+      router.push(PATH_PAGE.root);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);

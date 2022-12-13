@@ -21,7 +21,7 @@ GoalForm.propTypes = {
 
 export function GoalForm({ currentGoal }) {
   const { id, name, detail, employerId, status } = currentGoal || {};
-  const { push } = useRouter();
+  const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
   const [employers, setEmployers] = useState([]);
@@ -45,9 +45,7 @@ export function GoalForm({ currentGoal }) {
     mode: 'onChange',
   });
 
-  const { watch, reset, handleSubmit } = methods;
-
-  const values = watch();
+  const { reset, handleSubmit } = methods;
 
   const addGoal = async (data) => await GoalManagementService.addEmployeeGoal(data);
 
@@ -58,7 +56,7 @@ export function GoalForm({ currentGoal }) {
       await (id ? editGoal(data) : addGoal(data));
       reset();
       enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
-      push(PATH_PAGE.goals);
+      router.push(PATH_PAGE.goals);
     } catch (error) {
       console.error(error);
     }
