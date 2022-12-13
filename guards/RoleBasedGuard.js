@@ -13,7 +13,7 @@ const useCurrentRole = () => {
 export default function RoleBasedGuard({ accessibleRoles, children }) {
   const currentRole = useCurrentRole();
 
-  if (!accessibleRoles.includes(currentRole)) {
+  if (currentRole && !accessibleRoles.includes(currentRole)) {
     return (
       <Container>
         <Alert severity="error">

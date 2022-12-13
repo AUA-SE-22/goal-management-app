@@ -5,6 +5,7 @@ import { Button, Grid, Link } from '@mui/material';
 import { Box } from '@mui/system';
 import GoalItem from './GoalItem';
 import GoalDetailModal from './GoalDetailModal';
+import { PATH_PAGE } from '../../utils/paths';
 
 function GoalList({ goals, isEmployer }) {
   const [open, setOpen] = useState(false);
@@ -22,13 +23,15 @@ function GoalList({ goals, isEmployer }) {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-        {!isEmployer && <Button variant="contained" sx={{ ml: 'auto', mb: 2 }}>
-          <NextLink href="goals/new-goal" passHref legacyBehavior>
-            <Link underline="none" color="inherit">
-              New Goal
-            </Link>
-          </NextLink>
-        </Button>}
+        {!isEmployer && (
+          <Button variant="contained" sx={{ ml: 'auto', mb: 2 }}>
+            <NextLink href={PATH_PAGE.new} passHref legacyBehavior>
+              <Link underline="none" color="inherit">
+                New Goal
+              </Link>
+            </NextLink>
+          </Button>
+        )}
       </Box>
       <Grid container spacing={5}>
         {goals.map((goal) => (

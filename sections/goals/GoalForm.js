@@ -12,14 +12,16 @@ import FormProvider from '../../components/form/FormProvider';
 import Label from '../../components/Label';
 import RHFTextField from '../../components/form/RHFTextField';
 import RHFSelect from '../../components/form/RHFSelect';
+import { PATH_PAGE } from '../../utils/paths';
+import { GOAL_STATUS_STYLES } from '../../helpers/constants/goal';
 
 GoalForm.propTypes = {
   currentGoal: PropTypes.object,
 };
 
 export function GoalForm({ currentGoal }) {
-  const { id, name, detail, employerId } = currentGoal || {};
-  const { push } = useRouter();
+  const { id, name, detail, employerId, status } = currentGoal || {};
+  const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
   const [employers, setEmployers] = useState([]);
@@ -34,6 +36,7 @@ export function GoalForm({ currentGoal }) {
     name: name || '',
     detail: detail || '',
     employerId: employerId || '',
+    status: status || 'PENDING',
   };
 
   const methods = useForm({
@@ -42,9 +45,7 @@ export function GoalForm({ currentGoal }) {
     mode: 'onChange',
   });
 
-  const { watch, reset, handleSubmit } = methods;
-
-  const values = watch();
+  const { reset, handleSubmit } = methods;
 
   const addGoal = async (data) => await GoalManagementService.addEmployeeGoal(data);
 
@@ -55,7 +56,7 @@ export function GoalForm({ currentGoal }) {
       await (id ? editGoal(data) : addGoal(data));
       reset();
       enqueueSnackbar(!id ? 'Create success!' : 'Update success!');
-      push('/goals');
+      router.push(PATH_PAGE.goals);
     } catch (error) {
       console.error(error);
     }
@@ -79,14 +80,14 @@ export function GoalForm({ currentGoal }) {
 
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Card sx={{ pt: 4, pb: 8, px: 3 }}>
+      <Card sx={{ pt: 4, pb: 8, px: 3, position: 'relative' }}>
         <CardHeader title="Goal Details" sx={{ pt: 0, px: 0 }} />
         {id && (
           <Label
-            color={values.status !== 'active' ? 'error' : 'success'}
-            sx={{ textTransform: 'uppercase', position: 'absolute', top: 24, right: 24 }}
+            color={GOAL_STATUS_STYLES[`${status}`]?.color}
+            sx={{ textTransform: 'uppercase', position: 'absolute', top: 10, right: 10 }}
           >
-            {values.status}
+            {status}
           </Label>
         )}
         <Box

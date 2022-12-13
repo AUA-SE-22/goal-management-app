@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import { Typography, Button, Divider, Card, Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 import GoalManagementService from '../../helpers/service/GoalManagementService';
-import { GOAL_STATUS } from '../../helpers/constants/goal';
+import { GOAL_STATUS, GOAL_STATUS_STYLES } from '../../helpers/constants/goal';
 import { useSnackbar } from 'notistack';
+import Label from '../../components/Label';
 
 GoalItem.propTypes = {
   goal: PropTypes.object,
@@ -12,7 +13,7 @@ function GoalItem({ isEmployer, goal, handleDetails }) {
   const router = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { id, name, detail } = goal || {};
+  const { id, name, detail, status } = goal || {};
 
   const handleApprove = async () => {
     try {
@@ -38,9 +39,15 @@ function GoalItem({ isEmployer, goal, handleDetails }) {
   };
 
   return (
-    <Card sx={{ m: 2, height: 1, textAlign: 'center' }}>
+    <Card sx={{ m: 2, height: 1, textAlign: 'center', position: 'relative' }}>
       <Grid container direction="column" sx={{ height: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Grid item sx={{ flexGrow: 1 }}>
+        <Label
+          color={GOAL_STATUS_STYLES[`${status}`]?.color}
+          sx={{ textTransform: 'uppercase', position: 'absolute', top: 10, right: 10 }}
+        >
+          {status}
+        </Label>
+        <Grid item sx={{ flexGrow: 1, mt: 2 }}>
           <Typography variant="h5" sx={{ my: 3 }}>
             {name}
           </Typography>

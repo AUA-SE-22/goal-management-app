@@ -16,13 +16,19 @@ export const defaultSettings = {
 
 // -----------------------------------------------
 
-// API
-export const HOST_API = 'http://localhost:8081';
+/*
+API - added here instead of .env for easy access
+change to :4000 for json server
+*/
+export const HOST_API = 'http://localhost:4000';
 
+/*
+change default endpoints for json server
+*/
 export const API_ENDPOINTS = {
   goal: {
-    employeeGoal: 'employee/goals',
-    employerGoal: 'employer/goals',
-    employers: 'employers',
+    employeeGoal: 'employee/goals', //'e-goals'
+    employerGoal: 'employer/goals', //'er-goals'
+    employers: 'employers', // users/employers
   },
 };
