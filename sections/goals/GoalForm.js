@@ -20,7 +20,7 @@ GoalForm.propTypes = {
 };
 
 export function GoalForm({ currentGoal }) {
-  const { id, name, detail, employerId } = currentGoal || {};
+  const { id, name, detail, employerId, status } = currentGoal || {};
   const { push } = useRouter();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -36,6 +36,7 @@ export function GoalForm({ currentGoal }) {
     name: name || '',
     detail: detail || '',
     employerId: employerId || '',
+    status: status || 'PENDING',
   };
 
   const methods = useForm({
