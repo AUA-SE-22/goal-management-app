@@ -7,8 +7,7 @@ RoleBasedGuard.propTypes = {
 };
 
 const useCurrentRole = () => {
-  const role = localStorage.getItem('userRole');
-  return role;
+  if (typeof window !== 'undefined') return localStorage?.getItem('userRole');
 };
 
 export default function RoleBasedGuard({ accessibleRoles, children }) {
